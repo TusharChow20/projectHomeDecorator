@@ -15,7 +15,7 @@ const Home = () => {
         <Link to={"/products"} className="btn rounded-xl">
           See ALl Products
         </Link>
-      </div>
+      </div> 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 ">
         {data.slice(4, 10).map((d) => (
           <Product key={d.id} d={d}></Product>
