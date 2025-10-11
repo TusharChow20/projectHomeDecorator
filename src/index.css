@@ -1,7 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap");
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default, retro --prefersdark, cupcake;
 }
-* {
-  font-size: 27px;
+body {
+  font-family: "Playwrite US Modern", cursive;
+  font-optical-sizing: auto;
+  font-weight: 600;
+}
+@layer components {
+  .navbar,
+  .navbar * {
+    @apply font-[Playwrite_US_Modern] md:text-xl;
+  }
+  .footer,
+  .footer * {
+    @apply font-[Playwrite_US_Modern] font-semibold md:text-xl;
+  }
 }
