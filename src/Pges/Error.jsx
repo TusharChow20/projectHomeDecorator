@@ -6,7 +6,9 @@ const Error = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <h1>This is error</h1>
+      <main className="min-h-[calc(100vh-258px)]">
+        <h1>This is error</h1>
+      </main>
       <Footer></Footer>
     </div>
   );
