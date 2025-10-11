@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDataload } from "../Hooks/useDataload";
 import Product from "../Component/Product";
 import { Link } from "react-router";
@@ -10,11 +10,21 @@ const Products = () => {
 
   // console.log(search);
   const trimSearch = search.trim().toLowerCase();
-  const filteredData = trimSearch
-    ? data.filter((eachData) =>
-        eachData.name.toLowerCase().includes(trimSearch)
-      )
-    : data;
+  // const filteredData = trimSearch
+  //   ? data.filter((eachData) =>
+  //       eachData.name.toLowerCase().includes(trimSearch)
+  //     )
+  //   : data;
+  // use memo
+
+  const filteredData = useMemo(() => {
+    if (!trimSearch) {
+      return data;
+    }
+    return data.filter((eachData) =>
+      eachData.name.toLowerCase().includes(trimSearch)
+    );
+  }, [data, trimSearch]);
   // console.log(filteredData);
 
   return (

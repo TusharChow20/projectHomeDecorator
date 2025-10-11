@@ -4,7 +4,7 @@ import Products from "../Pges/Products";
 import MainLayOut from "../MainLayOut/MainLayOut";
 import Error from "../Pges/Error";
 import Wishlist from "../Pges/Wishlist";
-import axios from "axios";
+// import axios from "axios";
 
 export const router = createBrowserRouter([
   {
