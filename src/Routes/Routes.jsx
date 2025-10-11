@@ -3,7 +3,7 @@ import Home from "../Home";
 import Products from "../Pges/Products";
 import MainLayOut from "../MainLayOut/MainLayOut";
 import Error from "../Pges/Error";
-import Wishlist from "../Pges/Wishlist";
+import Cart from "../Pges/Cart";
 import ProductDetails from "../Pges/ProductDetails";
 // import axios from "axios";
 
@@ -23,8 +23,8 @@ export const router = createBrowserRouter([
         Component: Products,
       },
       {
-        path: "/wishlist",
-        Component: Wishlist,
+        path: "/cart",
+        Component: Cart,
       },
       {
         path: "/product/:id",

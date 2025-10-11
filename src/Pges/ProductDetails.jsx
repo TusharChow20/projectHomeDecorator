@@ -17,7 +17,7 @@ const ProductDetails = () => {
   return (
     <div>
       <div className="card lg:card-side bg-base-100 shadow-sm">
-        <figure className="w-60">
+        <figure className="w-60 mx-auto">
           <img className="w-full object-cover" src={image} alt="Album" />
         </figure>
         <div className="card-body">
@@ -28,7 +28,7 @@ const ProductDetails = () => {
           {/* <button className="btn">{stock}</button> */}
           <div className="card-actions items-center justify-end">
             <p>Price: {price} tk.</p>
-            <button className="btn">Buy Now</button>
+            <button className="btn">Add to Cart</button>
           </div>
         </div>
       </div>
