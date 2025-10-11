@@ -15,7 +15,6 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => axios("/furnitureData.json"),
         Component: Home,
       },
       {

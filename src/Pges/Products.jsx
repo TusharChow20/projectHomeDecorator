@@ -1,7 +1,9 @@
 import React from "react";
+import { useDataload } from "../Hooks/useDataload";
 
 const Products = () => {
-  return <div>this is products</div>;
+  const { data } = useDataload();
+  return <div>{data.length}</div>;
 };
 
 export default Products;
