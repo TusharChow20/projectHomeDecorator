@@ -4,6 +4,7 @@ import Products from "../Pges/Products";
 import MainLayOut from "../MainLayOut/MainLayOut";
 import Error from "../Pges/Error";
 import Wishlist from "../Pges/Wishlist";
+import ProductDetails from "../Pges/ProductDetails";
 // import axios from "axios";
 
 export const router = createBrowserRouter([
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: "/wishlist",
         Component: Wishlist,
+      },
+      {
+        path: "/product/:id",
+        Component: ProductDetails,
       },
     ],
   },

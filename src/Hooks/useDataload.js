@@ -7,7 +7,7 @@ export const useDataload = () => {
   const [error, setError] = useState(null);
   useEffect(() => {
     setLoading(true);
-    axios("/furnitureData.json")
+    axios("../furnitureData.json")
       .then((d) => setData(d.data))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
