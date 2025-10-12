@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDataload } from "../Hooks/useDataload";
 import Product from "../Component/Product";
 import { Link } from "react-router";
@@ -18,7 +18,7 @@ const Products = () => {
   //     )
   //   : data;
   // use memo
-  console.log(sort);
+  // console.log(sort);
 
   const filteredData = useMemo(() => {
     if (!trimSearch) {

@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import { useDataload } from "../Hooks/useDataload";
+import { addToLocalStorage } from "../LocalStorage/localStorage";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -12,7 +13,9 @@ const ProductDetails = () => {
     return <p>Loading..</p>;
   }
   const { description, image, dimensions, material, name, price } = product;
-
+  const handleLocalStorage = (id) => {
+    addToLocalStorage(id);
+  };
   return (
     <div>
       <div className="card lg:card-side bg-base-100 shadow-sm">
@@ -27,7 +30,9 @@ const ProductDetails = () => {
           {/* <button className="btn">{stock}</button> */}
           <div className="card-actions items-center justify-end">
             <p>Price: {price} tk.</p>
-            <button className="btn">Add to Cart</button>
+            <button onClick={() => handleLocalStorage(id)} className="btn">
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
