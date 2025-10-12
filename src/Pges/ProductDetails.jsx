@@ -11,8 +11,7 @@ const ProductDetails = () => {
   if (loading) {
     return <p>Loading..</p>;
   }
-  const { description, image, dimensions, material, name, price, stock } =
-    product;
+  const { description, image, dimensions, material, name, price } = product;
 
   return (
     <div>
