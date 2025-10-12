@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useDataload } from "../Hooks/useDataload";
 import { addToLocalStorage } from "../LocalStorage/localStorage";
 
@@ -35,6 +35,11 @@ const ProductDetails = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="flex mt-10">
+        <Link to={"/cart"} className="btn w-full md:w-1/3 mx-auto">
+          Go To Cart
+        </Link>
       </div>
     </div>
   );
