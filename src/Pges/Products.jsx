@@ -3,8 +3,9 @@ import { useDataload } from "../Hooks/useDataload";
 import Product from "../Component/Product";
 import { Link } from "react-router";
 import { FaArrowDown } from "react-icons/fa";
+import Loading from "../Component/Loading";
 const Products = () => {
-  const { data } = useDataload();
+  const { data, loading } = useDataload();
 
   const [search, setSearch] = useState("");
 
@@ -96,11 +97,15 @@ const Products = () => {
             </div>
           </div>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 ">
-          {handleSort().map((d) => (
-            <Product key={d.id} d={d}></Product>
-          ))}
-        </div>
+        {loading ? (
+          <Loading count={16}></Loading>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 ">
+            {handleSort().map((d) => (
+              <Product key={d.id} d={d}></Product>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
