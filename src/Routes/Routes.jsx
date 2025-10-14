@@ -5,6 +5,8 @@ import MainLayOut from "../MainLayOut/MainLayOut";
 import Error from "../Pges/Error";
 import Cart from "../Pges/Cart";
 import ProductDetails from "../Pges/ProductDetails";
+import Login from "../Pges/Login";
+import Payment from "../Pges/Payment";
 // import axios from "axios";
 
 export const router = createBrowserRouter([
@@ -29,6 +31,14 @@ export const router = createBrowserRouter([
       {
         path: "/product/:id",
         Component: ProductDetails,
+      },
+      {
+        path: "/login",
+        Component: Login,
+      },
+      {
+        path: "/payment",
+        Component: Payment,
       },
     ],
   },

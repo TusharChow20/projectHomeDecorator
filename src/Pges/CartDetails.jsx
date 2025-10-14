@@ -1,5 +1,6 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router";
 
 const CartDetails = ({ cartD, handleRemoveCart }) => {
   const { id, description, image, name, price } = cartD;
@@ -17,7 +18,7 @@ const CartDetails = ({ cartD, handleRemoveCart }) => {
           <h2 className="card-title">{name}</h2>
           <p>{description}</p>
           <div className="card-actions justify-between md:justify-end flex items-center">
-            <button className="btn ">Pay- {price}Tk</button>
+            <Link to={'/login'} className="btn ">Pay- {price}Tk</Link>
             <button
               onClick={() => handleRemoveCart(id)}
               className="btn bg-transparent"
