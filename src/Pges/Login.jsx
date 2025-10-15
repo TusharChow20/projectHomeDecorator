@@ -1,15 +1,20 @@
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import auth from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router";
 const googleProvider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider();
+
 const Login = () => {
+  const [error, setError] = useState("");
+  const emailRef = useRef();
   const navigate = useNavigate();
   const handleGoogleSignUP = () => {
     signInWithPopup(auth, googleProvider)
@@ -24,8 +29,33 @@ const Login = () => {
       .then((result) => setUser(result.user))
       .catch((error) => console.log(error));
   };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    setError("");
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        if (!result.user.emailVerified) {
+          alert("Please Verify Your Account");
+        }
+        event.target.reset();
+      })
+      .catch((error) => setError(error.message));
+  };
   const [user, setUser] = useState(null);
   const [alertShown, setAlertShown] = useState(false);
+  const hanldeForgetPass = () => {
+    const email = emailRef.current.value;
+    // console.log(email);
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("please check email");
+      })
+      .catch();
+  };
   useEffect(() => {
     if (user && !alertShown) {
       Swal.fire({
@@ -48,18 +78,38 @@ const Login = () => {
     <div className="flex flex-col items-center justify-center w-full">
       <h1>Let's Sign In First To Pay</h1>
       <div className="space-y-3 flex flex-col">
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        <form
+          onSubmit={handleLogin}
+          className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4"
+        >
           <legend className="fieldset-legend">Login</legend>
 
           <label className="label">Email</label>
-          <input type="email" className="input" placeholder="Email" />
+          <input
+            type="email"
+            name="email"
+            ref={emailRef}
+            className="input"
+            placeholder="Email"
+          />
 
           <label className="label">Password</label>
-          <input type="password" className="input" placeholder="Password" />
-
+          <input
+            type="password"
+            name="password"
+            className="input"
+            placeholder="Password"
+          />
+          {error ? (
+            <p className="text-red-500">{error}</p>
+          ) : (
+            <p className="text-green-500">Login Successfull</p>
+          )}
           <button className="btn btn-neutral mt-4">Login</button>
-          <p className="btn">Forget Email/Password?</p>
-        </fieldset>
+          <p onClick={hanldeForgetPass} className="btn ">
+            Forget Email/Password?
+          </p>
+        </form>
         {/* Google */}
         <button
           onClick={handleGoogleSignUP}

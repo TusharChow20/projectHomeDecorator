@@ -1,4 +1,7 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { Eye, EyeOff, Key, User } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
@@ -49,6 +52,10 @@ const LoginForm = () => {
       .then((result) => {
         setSuccess(true);
         e.target.reset();
+        sendEmailVerification(result.user).then(() =>
+          alert("please verify your email address")
+        );
+        
       })
       .catch((error) => setError(error.message));
     // console.log(email, password);\
