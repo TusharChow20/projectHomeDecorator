@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { Key, User } from "lucide-react";
+import { Eye, EyeOff, Key, User } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import auth from "../Firebase/firebase.config";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 const LoginForm = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -68,16 +69,27 @@ const LoginForm = () => {
           </label>
 
           {/* Password */}
-          <label className="input input-bordered flex items-center gap-2 w-full">
+          <div className="input input-bordered flex items-center gap-2 w-full">
             <Key className="w-4 h-4 opacity-70" />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
-              className="grow"
+              className="flex-1"
               placeholder="Password"
               required
             />
-          </label>
+            {showPassword ? (
+              <Eye
+                onClick={() => setShowPassword(!showPassword)}
+                className="cursor-pointer"
+              />
+            ) : (
+              <EyeOff
+                onClick={() => setShowPassword(!showPassword)}
+                className="cursor-pointer"
+              />
+            )}
+          </div>
 
           {/* <p className="text-xs text-error mt-1">
             Password must be 8+ characters
