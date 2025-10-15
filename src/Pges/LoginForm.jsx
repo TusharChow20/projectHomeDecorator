@@ -14,6 +14,12 @@ const LoginForm = () => {
 
     const password = e.target.password.value;
     const email = e.target.email.value;
+    const terms = e.target.terms.checked;
+    console.log("terms", terms);
+    if (!terms) {
+      setError("Please Accept Our Terms and Conditions");
+      return;
+    }
     const hasLetter = /[A-Za-z]/.test(password);
     const hasNumber = /\d/.test(password);
     const hasSpecial = /[@$!%*#?&]/.test(password);
@@ -91,15 +97,18 @@ const LoginForm = () => {
             )}
           </div>
 
-          {/* <p className="text-xs text-error mt-1">
-            Password must be 8+ characters
-          </p> */}
-
           {/* Register Button */}
           <button className="btn  mt-3">Register</button>
 
+          <div>
+            <label className="label">
+              <input type="checkbox" name="terms" className="checkbox" />
+              Accept Terms and Conditions
+            </label>
+          </div>
+
           <div className="text-center mt-2">
-            <Link to="/login" className="text-sm text-primary hover:underline">
+            <Link to="/login" className="text-sm text-red-400 hover:underline">
               Or login
             </Link>
           </div>
