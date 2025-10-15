@@ -14,6 +14,7 @@ const gitHubProvider = new GithubAuthProvider();
 
 const Login = () => {
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
   const emailRef = useRef();
   const navigate = useNavigate();
   const handleGoogleSignUP = () => {
@@ -36,14 +37,20 @@ const Login = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     setError("");
+    setSuccess(false);
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         if (!result.user.emailVerified) {
           alert("Please Verify Your Account");
+          return;
         }
+        setSuccess(true);
         event.target.reset();
       })
-      .catch((error) => setError(error.message));
+      .catch((error) => {
+        setSuccess(false);
+        setError(error.message);
+      });
   };
   const [user, setUser] = useState(null);
   const [alertShown, setAlertShown] = useState(false);
@@ -100,11 +107,9 @@ const Login = () => {
             className="input"
             placeholder="Password"
           />
-          {error ? (
-            <p className="text-red-500">{error}</p>
-          ) : (
-            <p className="text-green-500">Login Successfull</p>
-          )}
+          {error && <p className="text-red-500">{error}</p>}
+          {success && <p className="text-green-500">Login Successful</p>}
+
           <button className="btn btn-neutral mt-4">Login</button>
           <p onClick={hanldeForgetPass} className="btn ">
             Forget Email/Password?
