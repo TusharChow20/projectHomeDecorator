@@ -1,72 +1,81 @@
-import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-} from "firebase/auth";
+// import {
+//   
+//   sendEmailVerification,
+// } from "firebase/auth";
 import { Eye, EyeOff, Key, User } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
-import auth from "../Firebase/firebase.config";
+// import auth from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Context/AuthContext";
 
 const LoginForm = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const { createUser } = useContext(AuthContext);
+  // console.log(info);
+  // const handleRegister = (e) => {
+  //   e.preventDefault();
+
+  //   const password = e.target.password.value;
+  //   const email = e.target.email.value;
+  //   const terms = e.target.terms.checked;
+  //   console.log("terms", terms);
+  //   if (!terms) {
+  //     setError("Please Accept Our Terms and Conditions");
+  //     return;
+  //   }
+  //   const hasLetter = /[A-Za-z]/.test(password);
+  //   const hasNumber = /\d/.test(password);
+  //   const hasSpecial = /[@$!%*#?&]/.test(password);
+  //   const isLongEnough = password.length >= 8;
+  //   if (!isLongEnough) {
+  //     setError("Password must be at least 8 characters long.");
+  //     return;
+  //   }
+  //   if (!hasLetter) {
+  //     setError("Password must contain at least one letter (A-Z or a-z).");
+  //     return;
+  //   }
+  //   if (!hasNumber) {
+  //     setError("Password must contain at least one number (0-9).");
+  //     return;
+  //   }
+  //   if (!hasSpecial) {
+  //     setError(
+  //       "Password must include at least one special character (@$!%*#?&)."
+  //     );
+  //     return;
+  //   }
+
+  //   setError("");
+  //   setSuccess(false);
+  //   createUserWithEmailAndPassword(auth, email, password)
+  //     .then((result) => {
+  //       setSuccess(true);
+  //       e.target.reset();
+  //       sendEmailVerification(result.user).then(() =>
+  //         alert("please verify your email address")
+  //       );
+
+  //     })
+  //     .catch((error) => setError(error.message));
+  //   // console.log(email, password);\
+  // };
   const handleRegister = (e) => {
     e.preventDefault();
 
-    const password = e.target.password.value;
     const email = e.target.email.value;
-    const terms = e.target.terms.checked;
-    console.log("terms", terms);
-    if (!terms) {
-      setError("Please Accept Our Terms and Conditions");
-      return;
-    }
-    const hasLetter = /[A-Za-z]/.test(password);
-    const hasNumber = /\d/.test(password);
-    const hasSpecial = /[@$!%*#?&]/.test(password);
-    const isLongEnough = password.length >= 8;
-    if (!isLongEnough) {
-      setError("Password must be at least 8 characters long.");
-      return;
-    }
-    if (!hasLetter) {
-      setError("Password must contain at least one letter (A-Z or a-z).");
-      return;
-    }
-    if (!hasNumber) {
-      setError("Password must contain at least one number (0-9).");
-      return;
-    }
-    if (!hasSpecial) {
-      setError(
-        "Password must include at least one special character (@$!%*#?&)."
-      );
-      return;
-    }
-
-    setError("");
-    setSuccess(false);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        setSuccess(true);
-        e.target.reset();
-        sendEmailVerification(result.user).then(() =>
-          alert("please verify your email address")
-        );
-        
-      })
-      .catch((error) => setError(error.message));
-    // console.log(email, password);\
+    const password = e.target.password.value;
+    createUser(email, password);
   };
-
   return (
     <div className=" flex items-center justify-center min-h-[calc(100vh-258px)]">
       <div className="card w-full max-w-xl shadow-xl ">
         <form onSubmit={handleRegister} className="card-body">
           <h2 className="text-xl font-semibold flex items-center gap-2 ">
-            <User className="w-5 h-5 text-primary" /> Create new account
+            <User className="w-5 h-5 text-red-600" /> Create new account
           </h2>
 
           {/* Username */}
