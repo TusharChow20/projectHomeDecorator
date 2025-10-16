@@ -8,6 +8,7 @@ import ProductDetails from "../Pges/ProductDetails";
 import Login from "../Pges/Login";
 import Payment from "../Pges/Payment";
 import LoginForm from "../Pges/LoginForm";
+import Orders from "../Pges/Orders";
 // import axios from "axios";
 
 export const router = createBrowserRouter([
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: "/loginForm",
         Component: LoginForm,
+      },
+      {
+        path: "/orders",
+        Component: Orders,
       },
     ],
   },

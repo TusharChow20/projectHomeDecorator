@@ -3,12 +3,13 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 
 const Navbar = () => {
-  const { user, logOut  } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const handleSignout = () => {
-    logOut ().then(()=>{
-      console.log();
-    }).catch(error=>console.log(error)
-    )
+    logOut()
+      .then(() => {
+        console.log();
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div>
@@ -54,6 +55,16 @@ const Navbar = () => {
               <li>
                 <NavLink to={"/cart"}>Cart</NavLink>
               </li>
+              {user && (
+                <>
+                  <li>
+                    <NavLink to={"/orders"}>Orders</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={"/profile"}>Profile</NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
