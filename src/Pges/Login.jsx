@@ -2,13 +2,13 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   sendPasswordResetEmail,
-  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import auth from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
 const googleProvider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider();
 
@@ -30,26 +30,39 @@ const Login = () => {
       .then((result) => setUser(result.user))
       .catch((error) => console.log(error));
   };
+  const { signinUser } = useContext(AuthContext);
+  // const handleLogin = (event) => {
+  //   event.preventDefault();
 
+  //   const email = event.target.email.value;
+  //   const password = event.target.password.value;
+  //   setError("");
+  //   setSuccess(false);
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((result) => {
+  //       if (!result.user.emailVerified) {
+  //         alert("Please Verify Your Account");
+  //         return;
+  //       }
+  //       setSuccess(true);
+  //       event.target.reset();
+  //     })
+  //     .catch((error) => {
+  //       setSuccess(false);
+  //       setError(error.message);
+  //     });
+  // };
   const handleLogin = (event) => {
     event.preventDefault();
-
     const email = event.target.email.value;
     const password = event.target.password.value;
-    setError("");
-    setSuccess(false);
-    signInWithEmailAndPassword(auth, email, password)
+    signinUser(email, password)
       .then((result) => {
-        if (!result.user.emailVerified) {
-          alert("Please Verify Your Account");
-          return;
-        }
-        setSuccess(true);
+        console.log(result);
         event.target.reset();
       })
       .catch((error) => {
-        setSuccess(false);
-        setError(error.message);
+        console.log(error);
       });
   };
   const [user, setUser] = useState(null);
