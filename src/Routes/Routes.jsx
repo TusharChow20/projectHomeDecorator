@@ -9,6 +9,9 @@ import Login from "../Pges/Login";
 import Payment from "../Pges/Payment";
 import LoginForm from "../Pges/LoginForm";
 import Orders from "../Pges/Orders";
+import PrivateRoute from "./PrivateRoute";
+import Profile from "../Pges/Profile";
+import Dashboard from "../Pges/Dashboard";
 // import axios from "axios";
 
 export const router = createBrowserRouter([
@@ -48,7 +51,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "/orders",
-        Component: Orders,
+        element: (
+          <PrivateRoute>
+            <Orders></Orders>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
       },
     ],
   },

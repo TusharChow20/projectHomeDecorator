@@ -7,16 +7,20 @@ import {
 import React, { useContext, useEffect, useRef, useState } from "react";
 import auth from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 const googleProvider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider();
 
 const Login = () => {
   const [error, setError] = useState("");
+  const location = useLocation();
+  // console.log(location);
+  const navigate = useNavigate();
+
   const [success, setSuccess] = useState(false);
   const emailRef = useRef();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleGoogleSignUP = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
@@ -58,8 +62,9 @@ const Login = () => {
     const password = event.target.password.value;
     signinUser(email, password)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         event.target.reset();
+        navigate(location.state || "/");
       })
       .catch((error) => {
         console.log(error);

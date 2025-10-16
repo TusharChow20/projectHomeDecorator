@@ -10,13 +10,15 @@ import auth from "../Firebase/firebase.config";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signinUser = (email, password) => {
+    // setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
-    
   };
 
   const logOut = () => {
@@ -35,7 +37,8 @@ const AuthProvider = ({ children }) => {
     //mount / set the observer
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("current", currentUser);
+      // console.log("current", currentUser);
+      setLoading(false);
     });
     return () => {
       unsubscribe(); //unmount
@@ -45,6 +48,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signinUser,
     user,
+    loading,
     logOut,
   };
   return (
