@@ -89,17 +89,6 @@ VITE_FIREBASE_APP_ID=your_app_id
 
 ` npm run dev`
 
-# 💡 Project Highlights
-
-<p align="center">
-    <img src="https://komarev.com/ghpvc/?username=TusharChow20&label=Profile%20Views&color=0e75b6&style=flat" alt="TusharChow20 profile views" />
-    <a href="https://github.com/TusharChow20/homedecoratorproject/stargazers">
-        <img src="https://img.shields.io/github/stars/TusharChow20/homedecoratorproject?style=social" alt="GitHub stars" />
-    </a>
-    <a href="https://github.com/TusharChow20/homedecoratorproject/forks">
-        <img src="https://img.shields.io/github/forks/TusharChow20/homedecoratorproject?style=social" alt="GitHub forks" />
-    </a>
-</p>
 
 ## 🛠️ Tech Stack Badges
 

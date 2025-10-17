@@ -60,6 +60,7 @@ const Login = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
+    setError("");
     signinUser(email, password)
       .then((result) => {
         // console.log(result);
@@ -80,7 +81,14 @@ const Login = () => {
         navigate(location.state || "/");
       })
       .catch((error) => {
-        console.log(error);
+        setError(
+          error.message || "Login failed. Please check your credentials."
+        );
+        Swal.fire({
+          title: "Login Failed",
+          text: error.message || "Invalid email or password",
+          icon: "error",
+        });
       });
   };
   const [user, setUser] = useState(null);
