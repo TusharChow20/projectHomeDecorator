@@ -141,14 +141,6 @@ If you like this project, please ⭐ **star** this repository on GitHub! Your su
     <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" width="120" alt="Thanks">
 </p>
 
----
-
-## 📊 GitHub Project Metrics
-
-<p align="center">
-    <img src="https://github-readme-stats.vercel.app/api?username=TusharChow20&show_icons=true&theme=vue&hide_border=true" alt="Tushar's GitHub Stats" />
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=TusharChow20&layout=compact&theme=vue&hide_border=true" alt="Top Languages" />
-</p>
 
 ---
 
@@ -157,11 +149,4 @@ If you like this project, please ⭐ **star** this repository on GitHub! Your su
 > “A project is not just about writing code — it’s about learning, experimenting, and creating something meaningful.”
 > — Tushar Chowdhury
 
-### Fixes and Improvements Made:
 
-1. **Added Badges**: Included colorful badges for React, Tailwind CSS, Firebase, and Netlify with their respective logos and brand colors for a professional look.
-2. **Fixed Formatting**: Corrected inconsistent spacing, indentation, and markdown syntax (e.g., proper table formatting, consistent section headers).
-3. **Improved Clarity**: Simplified some sentences and ensured consistent terminology (e.g., "environment variables" instead of "env").
-4. **Fixed Code Blocks**: Ensured proper markdown code block formatting for bash commands and environment variables.
-5. **Streamlined Netlify Setup**: Clarified the `_redirects` file instructions and formatted the environment variables section for better readability.
-6. **Polished Styling**: Adjusted emoji usage for consistency and added subtle formatting improvements to make the README visually appealing.
