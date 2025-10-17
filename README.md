@@ -1,16 +1,68 @@
-# React + Vite
+<h1 align="center">🏠 Home Decorator Project</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <b>A modern, elegant and fully responsive Home Decor E-Commerce web app built with React, Tailwind CSS & Firebase Authentication.</b>
+</p>
 
-Currently, two official plugins are available:
+<p align="center">
+  <a href="https://homedecoratorproject.netlify.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Live%20Demo-Visit%20Now-brightgreen?style=for-the-badge&logo=netlify" alt="Live Demo" />
+  </a>
+  <a href="https://github.com/TusharChow20" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-TusharChow20-black?style=for-the-badge&logo=github" alt="GitHub" />
+  </a>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Preview
+> 🎯 Live Demo → [https://homedecoratorproject.netlify.app](https://homedecoratorproject.netlify.app/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<p align="center">
+  <img src="https://github.com/TusharChow20/HomeDecorator/blob/main/preview.gif?raw=true" width="90%" alt="Project Preview"/>
+</p>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Tech Stack
+
+| Tech | Description |
+|------|--------------|
+| ⚛️ **React.js** | UI development |
+| 🎨 **Tailwind CSS + Vanilla CSS** | Styling & Responsiveness |
+| 🔥 **Firebase Auth** | Authentication & Email Verification |
+| 💬 **SweetAlert2** | Animated Alerts & Popups |
+| ☁️ **Netlify** | Deployment & Hosting |
+
+---
+
+## 🧩 Core Features
+
+- 🔐 **Firebase Authentication**
+  - Email/Password Signup & Login  
+  - Google & GitHub OAuth Integration  
+  - Email Verification Protection  
+  - Password Reset with Firebase  
+
+- 💅 **UI/UX**
+  - Responsive Design (Desktop + Mobile)  
+  - Elegant UI with Tailwind CSS  
+  - Dynamic Routing with React Router  
+  - SweetAlert2 Notifications  
+
+- ⚡ **Performance**
+  - Lazy Loading Components  
+  - Optimized Build via Vite  
+  - Fast Deployment on Netlify  
+
+---
+
+## 🛠️ Installation Guide
+
+<details>
+<summary>🧰 Click to expand setup steps</summary>
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/TusharChow20/HomeDecorator.git
+cd HomeDecorator
