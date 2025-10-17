@@ -1,15 +1,14 @@
-// import {
-//
-//   sendEmailVerification,
-// } from "firebase/auth";
 import { Eye, EyeOff, Key, User } from "lucide-react";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 // import auth from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthContext";
+import { sendEmailVerification } from "firebase/auth";
+import auth from "../Firebase/firebase.config";
 
 const LoginForm = () => {
+  const [verify, setVerify] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -54,6 +53,17 @@ const LoginForm = () => {
       .then((result) => {
         setSuccess(true);
         e.target.reset();
+        sendEmailVerification(result.user).then(() => {
+          setVerify(true);
+          Swal.fire({
+            title: "Verification email sent! Please check your inbox/Spam",
+            icon: "info",
+            draggable: true,
+          });
+
+          e.target.reset();
+        });
+        auth.signOut();
       })
       .catch((error) => setError(error.message));
     setSuccess(false);

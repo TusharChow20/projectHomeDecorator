@@ -63,6 +63,19 @@ const Login = () => {
     signinUser(email, password)
       .then((result) => {
         // console.log(result);
+        if (!result.user?.emailVerified) {
+          Swal.fire({
+            title: "Please Verify Your Email!",
+            text: "A verification email was sent to your inbox/spam",
+            icon: "warning",
+          });
+          auth.signOut();
+          return;
+        }
+        Swal.fire({
+          title: "Login Successful!",
+          icon: "success",
+        });
         event.target.reset();
         navigate(location.state || "/");
       })
@@ -92,10 +105,19 @@ const Login = () => {
         imageAlt: "No Profile Picture Found",
         confirmButtonText: "Go to Payment",
         confirmButtonColor: "#3085d6",
-      }).then(() => {
-        setAlertShown(true);
-        navigate("/payment");
-      });
+      })
+        .then(() => {
+          setAlertShown(true);
+          navigate("/payment");
+        })
+        .catch((error) => {
+          console.log(error);
+          Swal.fire({
+            title: "Login Failed",
+            text: error.message,
+            icon: "error",
+          });
+        });
     }
   }, [user, alertShown]);
 
